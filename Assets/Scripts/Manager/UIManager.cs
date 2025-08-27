@@ -3,29 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class UIManager : SingletonMono<UIManager>
+public class UIManager : MonoBehaviour
 {
-    //Dictionary<string, GameObject> uiPrefabs;
-    GameObject[] uiPrefabs;
+    private static UIManager instance;
 
-    UIMainMenu uiMainMenu;
-    public UIMainMenu UIMainMenu { get { return uiMainMenu; } set { uiMainMenu = value; } }
-
-    protected override void Awake()
+    public static UIManager Instance
     {
-        base.Awake();
-
-        //uiPrefabs = Resources.LoadAll<GameObject>("UI").ToDictionary(prefab => prefab.name, prefab => prefab);
-        uiPrefabs = Resources.LoadAll<GameObject>("UI");
-
-        InitMainUI();
+        get
+        {
+            if (instance == null)
+            {
+                var singletonGO = new GameObject($"{typeof(UIManager)}");
+                instance = singletonGO.AddComponent<UIManager>();
+            }
+            return instance;
+        }
     }
 
-    void InitMainUI()
+    [SerializeField] UIMainMenu uiMainMenu;
+
+    private void Awake()
     {
-        foreach(var uiPrefab in uiPrefabs)
+        if (instance == null)
         {
-            Instantiate(uiPrefab, transform);
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
