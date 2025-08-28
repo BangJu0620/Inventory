@@ -17,6 +17,7 @@ public class UIStatus : UIBase
 
     private void Awake()
     {
+        //GetUI();
         player = GameManager.Instance.Player;
 
         returnButton.onClick.AddListener(OnClickCloseButton);
@@ -70,8 +71,8 @@ public class UIStatus : UIBase
         gameObject.SetActive(false);
     }
 
-    public override void GetUI()
-    {
-        UIManager.Instance.uiStatus = this;
-    }
+    //public override void GetUI()
+    //{
+    //    UIManager.Instance.uiStatus = this;
+    //}
 }

@@ -23,6 +23,7 @@ public class UIMainMenu : UIBase
 
     private void Awake()
     {
+        //GetUI();
         player = GameManager.Instance.Player;
 
         statusButton.onClick.AddListener(OnClickStatus);
@@ -76,8 +77,8 @@ public class UIMainMenu : UIBase
         inventoryButton.gameObject.SetActive(false);
     }
 
-    public override void GetUI()
-    {
-        throw new System.NotImplementedException();
-    }
+    //public override void GetUI()
+    //{
+    //    UIManager.Instance.uiMainMenu = this;
+    //}
 }
