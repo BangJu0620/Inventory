@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ public class UIMainMenu : UIBase
     [SerializeField] TextMeshProUGUI nickname;
     [SerializeField] TextMeshProUGUI level;
     [SerializeField] TextMeshProUGUI expText;
+    [SerializeField] TextMeshProUGUI goldText;
     [SerializeField] Image expFilled;
     //[SerializeField] Image title;
 
@@ -56,6 +58,7 @@ public class UIMainMenu : UIBase
         level.text = $"{player.Level}";
         expText.text = $"{player.CurExp} / {player.MaxExp}";
         expFilled.fillAmount = (float)player.CurExp / player.MaxExp;
+        goldText.text = player.Gold.ToString("N0");
         // Īȣ
     }
 

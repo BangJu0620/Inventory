@@ -849,6 +849,7 @@ MonoBehaviour:
   nickname: {fileID: 5501544458594361724}
   level: {fileID: 5260226370723542205}
   expText: {fileID: 3193756240882495417}
+  goldText: {fileID: 7690828078973834925}
   expFilled: {fileID: 7448715554869605230}
   statusButton: {fileID: 73031773032054960}
   inventoryButton: {fileID: 7589434069466239619}
@@ -1529,7 +1530,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 20,000
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4840c40a724597a47b6587962b2a17f3, type: 2}
   m_sharedMaterial: {fileID: -1004971983964316163, guid: 4840c40a724597a47b6587962b2a17f3, type: 2}
