@@ -22,6 +22,7 @@ public class UIManager : SingletonMono<UIManager>
 
     public UIMainMenu uiMainMenu;
     public UIStatus uiStatus;
+    public UIInventory uiInventory;
 
     protected override void Awake()
     {
@@ -41,6 +42,7 @@ public class UIManager : SingletonMono<UIManager>
     {
         uiMainMenu.OpenUI();
         uiStatus.CloseUI();
+        uiInventory.CloseUI();
     }
 
     void GetUI()
@@ -63,10 +65,12 @@ public class UIManager : SingletonMono<UIManager>
     public void OpenInventory()
     {
         uiMainMenu.CloseUI();
+        uiInventory.OpenUI();
     }
 
     public void CloseInventory()
     {
         uiMainMenu.OpenUI();
+        uiInventory.CloseUI();
     }
 }

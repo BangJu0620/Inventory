@@ -50,5 +50,6 @@ public class GameManager : SingletonMono<GameManager>
     void SetData()
     {
         //player = new Character(35, 40, 100, 25, 20000, 10, 12, 9, "Chad");
+        // 아이템도 추가
     }
 }
