@@ -8,6 +8,8 @@ public abstract class UIBase : MonoBehaviour
 
     public abstract void CloseUI();
 
+    public abstract void GetUI();
+
     protected virtual void Awake()
     {
         // UIManager에 할당하기

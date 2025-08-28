@@ -4,10 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIMainMenu : MonoBehaviour
+public class UIMainMenu : UIBase
 {
     [Header("캐릭터")]
-    [SerializeField] TextMeshProUGUI name;
+    [SerializeField] TextMeshProUGUI nickname;
     [SerializeField] TextMeshProUGUI level;
     [SerializeField] TextMeshProUGUI expText;
     [SerializeField] Image expFilled;
@@ -17,24 +17,64 @@ public class UIMainMenu : MonoBehaviour
     [SerializeField] Button statusButton;
     [SerializeField] Button inventoryButton;
 
-    public void CloseUI()
+    Player player;
+
+    private void Awake()
+    {
+        player = GameManager.Instance.Player;
+
+        statusButton.onClick.AddListener(OnClickStatus);
+        inventoryButton.onClick.AddListener(OnClickInventory);
+    }
+
+    private void Start()
+    {
+        //player = GameManager.Instance.Player;
+
+        //OpenUI();
+    }
+
+    void OnClickStatus()
+    {
+        UIManager.Instance.OpenStatus();
+    }
+
+    void OnClickInventory()
+    {
+        UIManager.Instance.OpenInventory();
+    }
+
+    public void UpdateMainMenu()
+    {
+        if(player == null)
+        {
+            Debug.Log("플레이어 데이터가 없습니다.");
+            return;
+        }
+        // 캐릭터 정보 갱신해주기
+        nickname.text = player.Name;
+        level.text = $"{player.Level}";
+        expText.text = $"{player.CurExp} / {player.MaxExp}";
+        expFilled.fillAmount = (float)player.CurExp / player.MaxExp;
+        // 칭호
+    }
+
+    public override void OpenUI()
+    {
+        UpdateMainMenu();
+
+        statusButton.gameObject.SetActive(true);
+        inventoryButton.gameObject.SetActive(true);
+    }
+
+    public override void CloseUI()
     {
         statusButton.gameObject.SetActive(false);
         inventoryButton.gameObject.SetActive(false);
     }
 
-    public void OpenUI()
+    public override void GetUI()
     {
-        statusButton.gameObject.SetActive(true);
-        inventoryButton.gameObject.SetActive(true);
-    }
-
-    public void UpdateUI()
-    {
-        // 캐릭터 정보 갱신해주기
-        // 이름
-        // 레벨
-        // 경험치
-        // 칭호
+        throw new System.NotImplementedException();
     }
 }

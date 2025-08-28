@@ -3,45 +3,70 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIManager : SingletonMono<UIManager>
 {
-    private static UIManager instance;
+    //private static UIManager instance;
 
-    public static UIManager Instance
+    //public static UIManager Instance
+    //{
+    //    get
+    //    {
+    //        if (instance == null)
+    //        {
+    //            var singletonGO = new GameObject($"{typeof(UIManager)}");
+    //            instance = singletonGO.AddComponent<UIManager>();
+    //        }
+    //        return instance;
+    //    }
+    //}
+
+    public UIMainMenu uiMainMenu;
+    public UIStatus uiStatus;
+
+    protected override void Awake()
     {
-        get
-        {
-            if (instance == null)
-            {
-                var singletonGO = new GameObject($"{typeof(UIManager)}");
-                instance = singletonGO.AddComponent<UIManager>();
-            }
-            return instance;
-        }
+        base.Awake();
+        //if (instance == null)
+        //{
+        //    instance = this;
+        //    DontDestroyOnLoad(gameObject);
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
-    [SerializeField] UIMainMenu uiMainMenu;
-
-    private void Awake()
+    private void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        uiMainMenu.OpenUI();
+        uiStatus.CloseUI();
     }
 
-    public void ToggleStatus()
+    void GetUI()
     {
-
+        //uiStatus = uiStatus.GetUI();
     }
 
-    public void ToggleInventory()
+    public void OpenStatus()
     {
+        uiMainMenu.CloseUI();
+        uiStatus.OpenUI();
+    }
 
+    public void CloseStatus()
+    {
+        uiMainMenu.OpenUI();
+        uiStatus.CloseUI();
+    }
+
+    public void OpenInventory()
+    {
+        uiMainMenu.CloseUI();
+    }
+
+    public void CloseInventory()
+    {
+        uiMainMenu.OpenUI();
     }
 }
