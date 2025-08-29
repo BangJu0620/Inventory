@@ -66,7 +66,7 @@ public class UIInventory : UIBase
 
     void OnClickUnEquipButton() // 아이템 장착 해제 버튼 눌렀을 때
     {
-        GameManager.Instance.Player.UnEquip();
+        GameManager.Instance.Player.UnEquip(selectedItem as EquipItemData);
         UpdateUI();
     }
 

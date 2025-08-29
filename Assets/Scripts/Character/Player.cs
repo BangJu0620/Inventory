@@ -28,15 +28,20 @@ public class Player : Character
     {
         if (this.equip != null) // 이미 장착하고 있는 아이템이 있다면 장착 해제
         {
-            UnEquip();
+            UnEquip(this.equip);
         }
         this.equip = equip;
         this.equip.isEquipped = true;
         AddStatus(this.equip);
     }
 
-    public void UnEquip()   // 아이템 장착 해제
+    public void UnEquip(EquipItemData equipItem)   // 아이템 장착 해제
     {
+        if (equip != equipItem)
+        {
+            Debug.Log("아이템이 다릅니다");
+            return;
+        }
         equip.isEquipped = false;
         RemoveStatus(equip);
         equip = null;
