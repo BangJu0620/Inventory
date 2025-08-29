@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class Player : Character
     // 장신구같이 여러개 장착 가능한 아이템은?
     // 컬렉션으로 모아서 관리해야 되나?
 
-    public UIInventory inventory;
+    [NonSerialized] public UIInventory inventory;
 
     public void GetItem(ItemData item)  // 아이템 획득
     {

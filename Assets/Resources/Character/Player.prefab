@@ -53,3 +53,4 @@ MonoBehaviour:
   <Level>k__BackingField: 10
   <MaxExp>k__BackingField: 12
   <CurExp>k__BackingField: 9
+  inventory: {fileID: 0}
