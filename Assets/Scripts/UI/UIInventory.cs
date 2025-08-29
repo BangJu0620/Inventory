@@ -10,6 +10,7 @@ public class UIInventory : UIBase
     [SerializeField] Transform slotTransform;
 
     List<UIItemSlot> slots = new List<UIItemSlot>();
+    public List<UIItemSlot> Slots { get { return slots; } set { slots = value; } }
 
     [SerializeField] int slotCount;
     int curItemCount;
@@ -27,11 +28,12 @@ public class UIInventory : UIBase
 
     ItemData selectedItem;
 
-    Character player;
+    Player player;
 
     private void Awake()
     {
         player = GameManager.Instance.Player;
+        player.inventory = this;
 
         returnButton.onClick.AddListener(OnClickReturnButton);
         closeButton.onClick.AddListener(OnClickCloseButton);
@@ -42,6 +44,7 @@ public class UIInventory : UIBase
     private void Start()
     {
         Init();
+        UpdateUI();
     }
 
     void OnClickReturnButton()
@@ -57,11 +60,13 @@ public class UIInventory : UIBase
     void OnClickEquipButton()
     {
         GameManager.Instance.Player.Equip(selectedItem as EquipItemData);
+        UpdateUI();
     }
 
     void OnClickUnEquipButton()
     {
         GameManager.Instance.Player.UnEquip();
+        UpdateUI();
     }
 
     public override void CloseUI()
@@ -73,11 +78,18 @@ public class UIInventory : UIBase
     public override void OpenUI()
     {
         gameObject.SetActive(true);
+        UpdateUI();
         CloseInfo();
     }
 
     public void OpenInfo(ItemData item)
     {
+        if (item == null)
+        {
+            CloseInfo();
+            Debug.Log("아이템 정보가 없습니다.");
+            return;
+        }
         if (!itemInfo.activeSelf) itemInfo.SetActive(true);
         SetItem(item);
     }
@@ -95,7 +107,7 @@ public class UIInventory : UIBase
         if(selectedItem is EquipItemData)
         {
             EquipItemData equip = selectedItem as EquipItemData;
-            itemValue.text = $"공격력\n{equip.Attack}\n\n방어력\n{equip.Deffense}\n\n체력\n{equip.Health}\n\n치명타\n{equip.Critical}";
+            itemValue.text = $"공격력\n{equip.Attack}\n방어력\n{equip.Deffense}\n체력\n{equip.Health}\n치명타\n{equip.Critical}";
         }
         else
         {
@@ -114,7 +126,7 @@ public class UIInventory : UIBase
                 break;
             }
         }
-        UpdateUI();
+        //UpdateUI();
     }
 
     void UpdateUI()

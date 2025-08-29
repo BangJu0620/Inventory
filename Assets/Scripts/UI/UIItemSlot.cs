@@ -15,7 +15,8 @@ public class UIItemSlot : MonoBehaviour
 
     [SerializeField] Button button;
     [SerializeField] Image icon;
-    [SerializeField] TextMeshProUGUI quatityText;
+    //[SerializeField] TextMeshProUGUI quatityText;
+    [SerializeField] GameObject equipImage;
 
     int index;
     int quantity;
@@ -39,15 +40,23 @@ public class UIItemSlot : MonoBehaviour
 
     public void Set()
     {
+        Debug.Log("Set");
         icon.gameObject.SetActive(true);
         icon.sprite = item.Icon;
-        quatityText.text = quantity > 1 ? quantity.ToString() : string.Empty;
+        if(item is EquipItemData)
+        {
+            EquipItemData equip = item as EquipItemData;
+            equipImage.SetActive(equip.isEquipped);
+        }
+        //quatityText.text = quantity > 1 ? quantity.ToString() : string.Empty;
     }
 
     public void Clear()
     {
+        Debug.Log("Clear");
         item = null;
         icon.gameObject.SetActive(false);
-        quatityText.text = string.Empty;
+        //quatityText.text = string.Empty;
+        equipImage.SetActive(false);
     }
 }

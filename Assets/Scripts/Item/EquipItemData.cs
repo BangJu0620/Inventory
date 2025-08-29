@@ -12,4 +12,6 @@ public class EquipItemData : ItemData
     [field: SerializeField] public float Health { get; protected set; }
 
     [field: SerializeField] public float Critical { get; protected set; }
+
+    public bool isEquipped;
 }

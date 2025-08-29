@@ -11,6 +11,12 @@ public class Player : Character
 
     public EquipItemData equip;
 
+    public UIInventory inventory;
+
+    private void Start()
+    {
+        
+    }
     //public void Init()
     //{
     //    Health = 100;
@@ -26,23 +32,35 @@ public class Player : Character
     //    CurExp = 9;
     //}
 
-    public void AddItem()
+    public void AddItem(ItemData item)
     {
-        
+        Debug.Log("AddItem");
+        // 인벤토리에 아이템 추가하기
+        //foreach(var slot in inventory.Slots)
+        //{
+        //    if(slot.Item == null)
+        //    {
+        //        slot.Item = item;
+        //        break;
+        //    }
+        //}
+        inventory.AddItem(item);
     }
 
     public void Equip(EquipItemData equip)
     {
-        if (equip != null)
+        if (this.equip != null)
         {
             UnEquip();
         }
         this.equip = equip;
-        AddStatus(equip);
+        this.equip.isEquipped = true;
+        AddStatus(this.equip);
     }
 
     public void UnEquip()
     {
+        equip.isEquipped = false;
         RemoveStatus(equip);
         equip = null;
     }

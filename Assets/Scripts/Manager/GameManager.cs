@@ -43,7 +43,10 @@ public class GameManager : SingletonMono<GameManager>
         //{
         //    Destroy(gameObject);
         //}
+    }
 
+    private void Start()
+    {
         SetData();
     }
 
@@ -51,5 +54,9 @@ public class GameManager : SingletonMono<GameManager>
     {
         //player = new Character(35, 40, 100, 25, 20000, 10, 12, 9, "Chad");
         // 아이템도 추가
+        foreach (var item in Resources.LoadAll<ItemData>("Item"))
+        {
+            player.AddItem(item);
+        }
     }
 }

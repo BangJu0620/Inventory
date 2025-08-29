@@ -280,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiMainMenu: {fileID: 1934650584}
   uiStatus: {fileID: 607222787}
-  uiInventory: {fileID: 3562127599449150406, guid: 0b2e04b0e62ee1b45ac1c5941afd2df5, type: 3}
+  uiInventory: {fileID: 2002091095}
 --- !u!1 &1714132819
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +467,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7762400062883801854, guid: 0b2e04b0e62ee1b45ac1c5941afd2df5, type: 3}
   m_PrefabInstance: {fileID: 3831287475415736459}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2002091095 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3562127599449150406, guid: 0b2e04b0e62ee1b45ac1c5941afd2df5, type: 3}
+  m_PrefabInstance: {fileID: 3831287475415736459}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15818e6e25507414da556e6dac8115dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2646323210861659794
 PrefabInstance:
   m_ObjectHideFlags: 0
