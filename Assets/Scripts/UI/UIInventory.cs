@@ -39,11 +39,12 @@ public class UIInventory : UIBase
         closeButton.onClick.AddListener(OnClickCloseButton);
         equipButton.onClick.AddListener(OnClickEquipButton);
         unEquipButton.onClick.AddListener(OnClickUnEquipButton);
+
+        Init();
     }
 
     private void Start()
     {
-        Init();
         UpdateUI();
     }
 
