@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbcd11a920064949841a9f099941b8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnButton: {fileID: 4225111384510541465}
+  closeButton: {fileID: 4225111384510541465}
   attackText: {fileID: 3816806615275509469}
   deffenseText: {fileID: 4057740329465131205}
   healthText: {fileID: 1753256604768328553}
@@ -1405,7 +1405,7 @@ GameObject:
   - component: {fileID: 7227302738585938267}
   - component: {fileID: 4225111384510541465}
   m_Layer: 5
-  m_Name: ReturnBtn
+  m_Name: CloseBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

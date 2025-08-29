@@ -6,49 +6,31 @@ using UnityEngine.UI;
 
 public class UIStatus : UIBase
 {
-    [SerializeField] Button returnButton;
+    [SerializeField] Button closeButton;
 
     [SerializeField] TextMeshProUGUI attackText;
     [SerializeField] TextMeshProUGUI deffenseText;
     [SerializeField] TextMeshProUGUI healthText;
     [SerializeField] TextMeshProUGUI criticalText;
 
-    Character player;
+    Player player;
 
     private void Awake()
     {
-        //GetUI();
         player = GameManager.Instance.Player;
 
-        returnButton.onClick.AddListener(OnClickCloseButton);
+        // 버튼 할당
+        closeButton.onClick.AddListener(OnClickCloseButton);
     }
 
-    private void Start()
-    {
-        //player = GameManager.Instance.Player;
-
-        //returnButton.onClick.AddListener(OnClickCloseButton);
-    }
-
-    //public void OpenStatus()
-    //{
-    //    UpdateStatus();
-    //    gameObject.SetActive(true);
-    //}
-
-    //public void CloseStatus()
-    //{
-    //    gameObject.SetActive(false);
-    //}
-
-    public void OnClickCloseButton()
+    public void OnClickCloseButton()    // 닫기 버튼 눌렀을 때
     {
         UIManager.Instance.CloseStatus();
     }
 
-    public void UpdateStatus()
+    public void UpdateStatus()  // 스탯 갱신해주기
     {
-        if (player == null)
+        if (player == null) // 없다면 실행
         {
             Debug.Log("플레이어 데이터가 없습니다.");
             return; 
@@ -60,19 +42,14 @@ public class UIStatus : UIBase
         criticalText.text = $"치명타\n{player.Critical}";
     }
 
-    public override void OpenUI()
+    public override void OpenUI()   // 스탯창 열기
     {
-        UpdateStatus();
+        UpdateStatus(); // 어차피 스탯창 열면 바뀔게 없으니 열때만 갱신
         gameObject.SetActive(true);
     }
 
-    public override void CloseUI()
+    public override void CloseUI()  // 스탯창 닫기
     {
         gameObject.SetActive(false);
     }
-
-    //public override void GetUI()
-    //{
-    //    UIManager.Instance.uiStatus = this;
-    //}
 }

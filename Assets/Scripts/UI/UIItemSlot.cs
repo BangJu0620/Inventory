@@ -13,24 +13,22 @@ public class UIItemSlot : MonoBehaviour
     [SerializeField] ItemData item;
     public ItemData Item { get { return item; } set { item = value; } }
 
-    [SerializeField] Button button;
-    [SerializeField] Image icon;
-    //[SerializeField] TextMeshProUGUI quatityText;
-    [SerializeField] GameObject equipImage;
+    [SerializeField] Button button; // 슬롯을 눌렀을 때 작용할 버튼
+    [SerializeField] Image icon;    // 아이템 아이콘
+    //[SerializeField] TextMeshProUGUI quatityText;   // 추가될 수도 있는 아이템 개수
+    [SerializeField] GameObject equipImage; // 장착 여부 이미지
 
-    int index;
-    int quantity;
-    public int Quantity {  get { return quantity; } set { quantity = value; } }
+    //int quantity;
+    //public int Quantity {  get { return quantity; } set { quantity = value; } }
 
     private void Awake()
     {
         button.onClick.AddListener(OnClickButton);
     }
 
-    public void Init(UIInventory inventory, int index)
+    public void Init(UIInventory inventory)
     {
         this.inventory = inventory;
-        this.index = index;
     }
 
     public void OnClickButton()
@@ -40,7 +38,6 @@ public class UIItemSlot : MonoBehaviour
 
     public void Set()
     {
-        Debug.Log("Set");
         icon.gameObject.SetActive(true);
         icon.sprite = item.Icon;
         if(item is EquipItemData)
@@ -53,7 +50,6 @@ public class UIItemSlot : MonoBehaviour
 
     public void Clear()
     {
-        Debug.Log("Clear");
         item = null;
         icon.gameObject.SetActive(false);
         //quatityText.text = string.Empty;

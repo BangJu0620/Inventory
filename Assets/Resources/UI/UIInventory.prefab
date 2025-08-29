@@ -126,12 +126,12 @@ MonoBehaviour:
   itemInfo: {fileID: 9209977881767299548}
   equipButton: {fileID: 4609010981603729046}
   unEquipButton: {fileID: 4873531269044352200}
-  closeButton: {fileID: 884661632967325540}
+  closeInfoButton: {fileID: 884661632967325540}
   itemName: {fileID: 3523735212184728143}
   itemValue: {fileID: 3811802300423120686}
   itemDescription: {fileID: 2898624353691276068}
   itemCountText: {fileID: 6960737616114056602}
-  returnButton: {fileID: 4677145916282437345}
+  closeButton: {fileID: 4677145916282437345}
 --- !u!1 &891282498784499676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,7 +1212,7 @@ GameObject:
   - component: {fileID: 2709254847294668776}
   - component: {fileID: 4677145916282437345}
   m_Layer: 5
-  m_Name: ReturnBtn
+  m_Name: CloseBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1408,7 +1408,7 @@ GameObject:
   - component: {fileID: 7497037446618336331}
   - component: {fileID: 884661632967325540}
   m_Layer: 5
-  m_Name: CloseBtn
+  m_Name: CloseInfoBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

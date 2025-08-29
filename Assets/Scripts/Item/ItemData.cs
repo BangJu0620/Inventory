@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EItemType
+public enum EItemType   // 이후에 소모품 등 추가 가능
 {
     Equipable
 }
