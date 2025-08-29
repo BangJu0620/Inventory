@@ -15,19 +15,6 @@
 - `SingletonMono` 내부에 싱글톤 생성 기능 내장 → 상속만으로 싱글톤 설정  
 - `Awake`는 `virtual` → 상속받은 클래스에서 사용 시 `override` + `base.Awake()` 필요  
 
-```csharp
-public class SingletonMono<T> : MonoBehaviour where T : MonoBehaviour
-{
-    public static T Instance { get; private set; }
-
-    protected virtual void Awake()
-    {
-        if (Instance == null) Instance = this as T;
-        else Destroy(gameObject);
-    }
-}
-```
-
 ---
 
 ### 🖼 UIBase
